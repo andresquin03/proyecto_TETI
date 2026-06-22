@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External Customers - Demo de Custom Control</title>
+    <style>
+        html, body, #content { height: 100%; }
+    </style>
+    <!-- UI5 desde el CDN (igual que index.html, sin compilar UI5) -->
+    <script
+        id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/1.149.0/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-resource-roots='{ "ns.incidents": "./" }'
+        data-sap-ui-compat-version="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-frame-options="trusted"
+    ></script>
+    <script>
+        sap.ui.require(["sap/ui/core/mvc/XMLView"], function (XMLView) {
+            XMLView.create({
+                viewName: "ns.incidents.view.CustomerBadges"
+            }).then(function (oView) {
+                oView.placeAt("content");
+            });
+        });
+    </script>
+</head>
+<body class="sapUiBody" id="content"></body>
+</html>

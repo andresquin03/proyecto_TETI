@@ -1,0 +1,4 @@
+code;name;descr
+L;Low;The issue has low impact and can be addressed later.
+M;Medium;The issue has moderate impact and should be addressed in a timely manner.
+H;High;The issue has high impact and requires immediate attention.

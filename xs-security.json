@@ -1,0 +1,46 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Viewer",
+      "description": "Read-only access to Incidents"
+    },
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full administrative access"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Viewer",
+      "description": "Read-only access to Incidents",
+      "scope-references": [
+        "$XSAPPNAME.Viewer"
+      ]
+    },
+    {
+      "name": "Admin",
+      "description": "Full administrative access",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "IncidentViewer",
+      "description": "Incident Viewer (read-only)",
+      "role-template-references": [
+        "$XSAPPNAME.Viewer"
+      ]
+    },
+    {
+      "name": "IncidentAdmin",
+      "description": "Incident Administrator (full access)",
+      "role-template-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    }
+  ],
+  "authorities-inheritance": false
+}

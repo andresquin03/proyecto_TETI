@@ -1,0 +1,27 @@
+node_modules/
+target/
+_out/
+gen/
+.gen/
+
+# Credenciales / entorno (NUNCA commitear)
+.cdsrc-private.json
+default-*.json
+*.sqlite
+.env
+.env*
+!.env.example
+
+# MTA
+mta_archives/
+*_mta_build_tmp
+*.mtar
+
+# Approuter: UI estática copiada en build (fuente: app/incidents/webapp)
+app/router/resources/
+
+# Other
+.DS_Store
+
+# @cap-js/cds-typer
+@cds-models

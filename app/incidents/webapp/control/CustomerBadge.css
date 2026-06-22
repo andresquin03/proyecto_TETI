@@ -1,0 +1,56 @@
+/* Estilos a medida del custom control CustomerBadge.
+   El aspecto (borde redondeado, sombra, avatar con inicial) deja claro
+   que es un componente hecho a medida y no un control estándar de Fiori. */
+
+.customerBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-sizing: border-box;
+    width: 22rem;
+    margin: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    border: 2px solid #0a6ed1;
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    font-family: "72", "72full", Arial, Helvetica, sans-serif;
+}
+
+.customerBadgeAvatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.customerBadgeInfo {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.customerBadgeName {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #32363a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.customerBadgeEmail {
+    font-size: 0.8125rem;
+    color: #0a6ed1;
+}
+
+.customerBadgePhone {
+    font-size: 0.8125rem;
+    color: #6a6d70;
+}

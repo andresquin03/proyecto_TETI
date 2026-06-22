@@ -1,0 +1,6 @@
+ID;firstName;lastName;email;phone;creditCardNo;createdAt;createdBy;modifiedAt;modifiedBy
+6492697e-68ae-429c-88f2-69cb836eab5b;John;Doe;john.doe@example.com;1234567890;1234567812345678;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+aa91d90e-a176-4798-80d2-107d68a5233a;Jane;Smith;jane.smith@example.com;0987654321;8765432187654321;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+5a0ff8ec-c1b8-438f-b284-b987cef17058;Emily;Johnson;emily.johnson@example.com;1122334455;2345678923456789;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+46d988fe-bb25-4161-97c1-8c8bcadbd4bf;Michael;Brown;michael.brown@example.com;2233445566;3456789034567890;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+71d06785-65c6-4167-baa1-b4fc0ac00073;Sarah;Davis;sarah.davis@example.com;3344556677;4567890145678901;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin

@@ -1,0 +1,6 @@
+ID;customer_ID;title;urgency_code;status_code;createdAt;createdBy;modifiedAt;modifiedBy
+6492697e-68ae-429c-88f2-69cb836eab5b;6492697e-68ae-429c-88f2-69cb836eab5b;Laptop Screen Issue;M;N;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+aa91d90e-a176-4798-80d2-107d68a5233a;aa91d90e-a176-4798-80d2-107d68a5233a;Network Connectivity Problem;H;N;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+5a0ff8ec-c1b8-438f-b284-b987cef17058;6492697e-68ae-429c-88f2-69cb836eab5b;Software Installation Request;L;N;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+46d988fe-bb25-4161-97c1-8c8bcadbd4bf;aa91d90e-a176-4798-80d2-107d68a5233a;Printer Malfunction;M;N;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin
+71d06785-65c6-4167-baa1-b4fc0ac00073;5a0ff8ec-c1b8-438f-b284-b987cef17058;Password Reset Request;L;N;2021-06-27T14:52:23Z;admin;2021-06-27T14:52:23Z;admin

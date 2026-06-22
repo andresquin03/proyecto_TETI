@@ -1,0 +1,31 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:control="ns.incidents.control"
+    controllerName="ns.incidents.controller.CustomerBadges"
+    displayBlock="true"
+    height="100%">
+    <App id="badgesApp">
+        <Page id="badgesPage" title="External Customers - Demo de Custom Control">
+            <content>
+                <MessageStrip
+                    id="badgesInfo"
+                    class="sapUiSmallMargin"
+                    type="Information"
+                    showIcon="true"
+                    text="Cada tarjeta se renderiza con el custom control ns.incidents.control.CustomerBadge (extiende sap.ui.core.Control). Los datos provienen del servicio OData /odata/v4/processor/ExternalCustomers." />
+                <FlexBox
+                    id="badgesBox"
+                    wrap="Wrap"
+                    class="sapUiSmallMarginBegin"
+                    items="{/value}">
+                    <control:CustomerBadge
+                        id="customerBadge"
+                        name="{name}"
+                        email="{email}"
+                        phone="{phone}" />
+                </FlexBox>
+            </content>
+        </Page>
+    </App>
+</mvc:View>

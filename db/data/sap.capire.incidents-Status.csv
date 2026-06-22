@@ -1,0 +1,6 @@
+code;criticality;name;descr
+N;1;New;The incident is newly created and not yet addressed.
+I;2;In Progress;The incident is currently being worked on.
+R;3;Resolved;The incident has been resolved and closed.
+C;4;Closed;The incident is closed and no further action is required.
+H;5;Hold;The incident is on hold awaiting further information or action.

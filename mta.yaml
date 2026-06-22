@@ -1,0 +1,95 @@
+_schema-version: 3.3.0
+ID: ProyectoTETI
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+        # Empaqueta la UI Fiori estática dentro del App Router standalone
+        # (se sirve vía xs-app.json -> localDir). Fuente única: app/incidents/webapp.
+        - rm -rf app/router/resources/incidents
+        - mkdir -p app/router/resources/incidents
+        - cp -r app/incidents/webapp/. app/router/resources/incidents/
+modules:
+  - name: ProyectoTETI-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      instances: 1
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: ProyectoTETI-auth
+      - name: incidents-pg
+
+  # Deployer del esquema: corre `cds deploy` DENTRO de CF contra el Postgres
+  # gestionado de BTP (no es accesible desde afuera). Crea tablas + carga CSVs.
+  - name: ProyectoTETI-db-deployer
+    type: nodejs
+    path: gen/pg
+    parameters:
+      buildpack: nodejs_buildpack
+      no-route: true
+      no-start: true
+      tasks:
+        - name: deploy-to-postgresql
+          command: npm start
+    requires:
+      - name: incidents-pg
+
+  - name: ProyectoTETI
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: ProyectoTETI-auth
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
+
+resources:
+  - name: ProyectoTETI-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: ProyectoTETI-${org}-${space}
+        tenant-mode: dedicated
+        oauth2-configuration:
+          credential-types:
+            - "binding-secret"
+            - "x509"
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
+    requires:
+      - name: app-api
+  # PostgreSQL gestionado de BTP (vive dentro del landscape, sin salir a internet).
+  # La instancia se crea con `cf create-service postgresql-db trial incidents-pg`.
+  # El MTA solo se BINDEA a ella (existing-service).
+  - name: incidents-pg
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: incidents-pg

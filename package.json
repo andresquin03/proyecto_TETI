@@ -1,0 +1,56 @@
+{
+  "name": "ProyectoTETI",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/postgres": "^2",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4",
+    "dayjs": "^1.11.21"
+  },
+  "devDependencies": {
+    "@cap-js/cds-test": "^1.0.1",
+    "@cap-js/sqlite": "^2.4",
+    "@sap/cds-dk": "^9",
+    "cds-plugin-ui5": "^0.17.0",
+    "jest": "^30.4.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-incidents": "cds watch --open ns.incidents/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "local:supabase": "NODE_PATH= CDS_ENV=supabase node node_modules/@sap/cds/bin/serve.js",
+    "test": "jest"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "db": {
+        "[development]": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": ":memory:"
+          }
+        },
+        "[production]": {
+          "kind": "postgres",
+          "vcap": {
+            "name": "incidents-pg"
+          }
+        }
+      },
+      "auth": {
+        "[development]": {
+          "kind": "dummy"
+        },
+        "[production]": {
+          "kind": "xsuaa"
+        }
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/incidents"
+  ]
+}
