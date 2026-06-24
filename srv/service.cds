@@ -4,6 +4,7 @@ using {sap.capire.incidents as my} from '../db/schema';
  * Service used by support personell, i.e. the incidents' 'processors'.
  */
 @title: 'Processor Service - Incident Management'
+@protocol: ['odata-v4', 'graphql']
 service ProcessorService {
     @odata.draft.enabled // habilita el flujo CRUD completo (crear/editar/borrar) en Fiori Elements
     entity Incidents as projection on my.Incidents {
@@ -34,6 +35,7 @@ service ProcessorService {
  * Service used by administrators to manage customers and incidents.
  */
 @title: 'Admin Service - Incident Management'
+@protocol: ['odata-v4', 'graphql']
 service AdminService {
     entity Customers as projection on my.Customers;
     entity Incidents as projection on my.Incidents;

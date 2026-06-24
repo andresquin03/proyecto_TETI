@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@cap-js/audit-logging": "^1",
+    "@cap-js/graphql": "^0.14.0",
     "@cap-js/postgres": "^2",
     "@sap/cds": "^9",
     "@sap/xssec": "^4",
