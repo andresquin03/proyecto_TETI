@@ -2,6 +2,7 @@
   "name": "ProyectoTETI",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/audit-logging": "^1",
     "@cap-js/postgres": "^2",
     "@sap/cds": "^9",
     "@sap/xssec": "^4",
@@ -43,6 +44,14 @@
         },
         "[production]": {
           "kind": "xsuaa"
+        }
+      },
+      "audit-log": {
+        "[development]": {
+          "kind": "audit-log-to-console"
+        },
+        "[production]": {
+          "kind": "audit-log-to-console"
         }
       }
     }

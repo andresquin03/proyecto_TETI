@@ -31,6 +31,7 @@ modules:
     requires:
       - name: ProyectoTETI-auth
       - name: incidents-pg
+      - name: ProyectoTETI-logs
 
   # Deployer del esquema: corre `cds deploy` DENTRO de CF contra el Postgres
   # gestionado de BTP (no es accesible desde afuera). Crea tablas + carga CSVs.
@@ -93,3 +94,12 @@ resources:
     type: org.cloudfoundry.existing-service
     parameters:
       service-name: incidents-pg
+
+  # SAP Application Logging Service: captura el stdout/stderr del módulo srv
+  # (incluidos los eventos de @cap-js/audit-logging en modo consola) y lo expone
+  # en una UI web tipo Kibana accesible desde el cockpit de BTP.
+  - name: ProyectoTETI-logs
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
